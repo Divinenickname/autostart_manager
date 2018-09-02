@@ -17,7 +17,7 @@ public class AutostartManager {
         // TODO code application logic here
         //getAutostartList();
         deleteApp("planks");
-        //new COMMIT
+        //new COMMIT 21312312
     }
     
     private static String getHome(){
