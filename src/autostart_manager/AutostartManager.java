@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package autostart.manager;
+package autostart_manager;
 import java.io.File;
 import java.util.Scanner;
 
@@ -16,6 +16,7 @@ public class AutostartManager {
     public static void main(String[] args) {
         // TODO code application logic here
         //getAutostartList();
+        //комиться сука
         deleteApp("planks");
         //new COMMIT 21312312
     }
