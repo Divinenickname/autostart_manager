@@ -24,21 +24,27 @@ public class Main {
         //getAutostartList();
 
         //TEST MENU REWRITE AFTER
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        try{
-            String cmd = bufferedReader.readLine();
+        String cmd="";
+        BufferedReader bufferedReader = new BufferedReader(
+                new InputStreamReader(System.in));
+        while(!cmd.equals("exit")){
+            try{
+            cmd = bufferedReader.readLine();
 
             switch (cmd){
                 case "list":
                     getAutostartList();
+                    break;
             }
         }
-        catch(IOException e){
-            System.out.println(e);
+            catch(IOException e){
+                System.out.println(e);
+            }
         }
+        
 
 
-        addApp("Planks","Application", "planks", false, false);
+        //addApp("Planks","Application", "planks", false, false);
     }
     
     private static String getHome(){
