@@ -24,7 +24,7 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
         //getAutostartList();
-        deleteApp("planks");
+        addApp("Planks","Application", "planks", false, false);
     }
     
     private static String getHome(){
@@ -85,6 +85,7 @@ public class Main {
             file.createNewFile();
             FileWriter fw = new FileWriter(file);
             fw.write(s);
+            fw.close();
             System.out.println(name+".desktop created");
         }
         catch (IOException e){
