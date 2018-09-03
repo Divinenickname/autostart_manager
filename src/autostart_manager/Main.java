@@ -4,14 +4,22 @@
  * and open the template in the editor.
  */
 package autostart_manager;
+
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 /**
  *
  * @author user
  */
-public class AutostartManager {
+
+public class Main {
 
     public static void main(String[] args) {
         // TODO code application logic here
@@ -60,8 +68,30 @@ public class AutostartManager {
         }
     }
     
-    public static void editApp(String name){
-        
+    public static void addApp(String name, String type, String exec, boolean terminal, boolean hidden){
+        Path path = Paths.get(getHome() + "/" + name + ".desktop");
+        File file = new File(getHome() + "/" + name + ".desktop");
+
+
+        String s = "[Desktop Entry]\n" +
+                "Name=" + name + "\n" +
+                "Type=" + type + "\n" +
+                "Exec=" + exec + "\n" +
+                "Hidden=" + hidden + "\n" +
+                "Terminal=" + terminal;
+
+        try{
+            byte[] bytes = s.getBytes("utf-8");
+            file.createNewFile();
+            FileWriter fw = new FileWriter(file);
+            fw.write(s);
+            System.out.println(name+".desktop created");
+        }
+        catch (IOException e){
+            System.out.println(e);
+        }
+
+
     }
     
 }
