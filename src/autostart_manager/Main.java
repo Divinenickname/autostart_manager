@@ -30,7 +30,7 @@ public class Main {
         while(!cmd.equals("exit")){
             try{
             cmd = bufferedReader.readLine();
-
+            
             switch (cmd){
                 case "list":
                     getAutostartList();
@@ -94,16 +94,14 @@ public class Main {
         }
     }
     
-    public static void addApp(String name, String type, String exec, boolean terminal, boolean hidden){
+    public static void addApp(String name, String type, String exec){
         Path path = Paths.get(getAppPath(name));
         File file = new File(getAppPath(name));
 
         String s = "[Desktop Entry]\n" +
                 "Name=" + name + "\n" +
                 "Type=" + type + "\n" +
-                "Exec=" + exec + "\n" +
-                "Hidden=" + hidden + "\n" +
-                "Terminal=" + terminal;
+                "Exec=" + exec + "\n";
 
         try{
             byte[] bytes = s.getBytes("utf-8");
