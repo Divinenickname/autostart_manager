@@ -5,10 +5,7 @@
  */
 package autostart_manager;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -20,16 +17,39 @@ import java.util.Scanner;
  */
 
 public class Main {
+    enum menu {add, del, exit, list};
 
     public static void main(String[] args) {
         // TODO code application logic here
         //getAutostartList();
+
+        //TEST MENU REWRITE AFTER
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        try{
+            String cmd = bufferedReader.readLine();
+
+            switch (cmd){
+                case "list":
+                    getAutostartList();
+            }
+        }
+        catch(IOException e){
+            System.out.println(e);
+        }
+
+
         addApp("Planks","Application", "planks", false, false);
     }
     
     private static String getHome(){
         String homedir = System.getProperty("user.home")+"/.config/autostart";
         return homedir;
+    }
+
+    private static String getAppPath(String appName){
+        String path;
+        path = getHome()+ "/" + appName+ ".desktop";
+        return path;
     }
     
     public static void getAutostartList(){
@@ -69,9 +89,8 @@ public class Main {
     }
     
     public static void addApp(String name, String type, String exec, boolean terminal, boolean hidden){
-        Path path = Paths.get(getHome() + "/" + name + ".desktop");
-        File file = new File(getHome() + "/" + name + ".desktop");
-
+        Path path = Paths.get(getAppPath(name));
+        File file = new File(getAppPath(name));
 
         String s = "[Desktop Entry]\n" +
                 "Name=" + name + "\n" +
@@ -91,8 +110,5 @@ public class Main {
         catch (IOException e){
             System.out.println(e);
         }
-
-
     }
-    
 }
