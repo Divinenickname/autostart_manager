@@ -35,6 +35,9 @@ public class Main {
                 case "list":
                     getAutostartList();
                     break;
+                case "del":
+                    deleteApp();
+                    break;
             }
         }
             catch(IOException e){
@@ -73,45 +76,69 @@ public class Main {
         }
     }
     
-    public static void deleteApp(String name){
-        String appName = name+".desktop";
-        File file = new File(getHome() + "/" + appName);
-        if(file.exists()){
-            System.out.println("Do you really want to delete " + appName + "?");
-            System.out.println("Y/n?");
-            
-            Scanner sc = new Scanner(System.in);
-            String line = sc.next();
-            
-            if('y' == line.charAt(0) || 'Y' == line.charAt(0)){
-                file.delete();
-                System.out.println("File deleted");
+    public static void deleteApp(){
+        String name;
                 
-            } 
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        
+        try{
+            System.out.println("Enter Program name");
+            name = br.readLine();
+            
+            String appName = name+".desktop";
+            File file = new File(getHome() + "/" + appName);
+            
+            if(file.exists()){
+                System.out.println("Do you really want to delete " + appName + "?");
+                System.out.println("Y/n?");
+            
+                String line = br.readLine();
+            
+                if('y' == line.charAt(0) || 'Y' == line.charAt(0)){
+                    file.delete();
+                    System.out.println("File deleted");
+                } 
         }
-        else{
-            System.out.println(appName + " doesn't exists");
+            else{
+                System.out.println(appName + " doesn't exists");
+            }
+        
         }
+        catch(IOException e){
+            System.out.println(e);
+        }
+        
+        
     }
     
-    public static void addApp(String name, String type, String exec){
-        Path path = Paths.get(getAppPath(name));
-        File file = new File(getAppPath(name));
-
-        String s = "[Desktop Entry]\n" +
+    public static void addApp(){
+        String name, type, exec;
+        
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        
+        try{
+            System.out.println("Enter application name");
+            name = br.readLine();
+            System.out.println("Enter application type");
+            type = br.readLine();
+            System.out.println("Enter exec");
+            exec = br.readLine();
+            
+            String s = "[Desktop Entry]\n" +
                 "Name=" + name + "\n" +
                 "Type=" + type + "\n" +
                 "Exec=" + exec + "\n";
-
-        try{
-            byte[] bytes = s.getBytes("utf-8");
+            
+            Path path = Paths.get(getAppPath(name));
+            File file = new File(getAppPath(name));
+            
             file.createNewFile();
             FileWriter fw = new FileWriter(file);
             fw.write(s);
             fw.close();
             System.out.println(name+".desktop created");
         }
-        catch (IOException e){
+        catch(IOException e){
             System.out.println(e);
         }
     }
