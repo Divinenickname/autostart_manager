@@ -35,8 +35,13 @@ public class Main {
                 case "list":
                     getAutostartList();
                     break;
+
                 case "del":
                     deleteApp();
+                    break;
+
+                case "add":
+                    addApp();
                     break;
             }
         }
@@ -44,10 +49,6 @@ public class Main {
                 System.out.println(e);
             }
         }
-        
-
-
-        //addApp("Planks","Application", "planks", false, false);
     }
     
     private static String getHome(){
