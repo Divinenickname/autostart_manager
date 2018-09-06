@@ -10,6 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
+import org.apache.commons.cli.*;
 
 /**
  *
@@ -23,7 +24,7 @@ public class Main {
         // TODO code application logic here
         //getAutostartList();
 
-        //TEST MENU REWRITE AFTER
+        //TEST MENU REWRITE AFTER        
         String cmd="";
         BufferedReader bufferedReader = new BufferedReader(
                 new InputStreamReader(System.in));
@@ -42,6 +43,10 @@ public class Main {
 
                 case "add":
                     addApp();
+                    break;
+                    
+                case "help":
+                    System.out.println("HELP");
                     break;
             }
         }
