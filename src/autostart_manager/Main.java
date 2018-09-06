@@ -23,7 +23,7 @@ public class Main {
         // TODO code application logic here
         //getAutostartList();
 
-        //TEST MENU REWRITE AFTER
+        //TEST MENU REWRITE AFTER        
         String cmd="";
         BufferedReader bufferedReader = new BufferedReader(
                 new InputStreamReader(System.in));
@@ -42,6 +42,10 @@ public class Main {
 
                 case "add":
                     addApp();
+                    break;
+                    
+                case "help":
+                    System.out.println("HELP");
                     break;
             }
         }
