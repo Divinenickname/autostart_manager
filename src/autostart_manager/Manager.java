@@ -18,8 +18,7 @@ public class Manager {
 
     public static void getAutostartList(){
         String[] list;
-        File dir = new File(System.getProperty(
-                "user.home") + "/.config/autostart");
+        File dir = new File(System.getProperty("user.home") + "/.config/autostart");
         if(dir.isDirectory()){
             list = dir.list();
             for(String s: list){
@@ -27,7 +26,7 @@ public class Manager {
             }
         }
         else{
-            System.out.println("Can't find directory");
+            System.err.println("Can't find directory");
         }
     }
 
@@ -62,8 +61,6 @@ public class Manager {
         catch(IOException e){
             System.out.println(e);
         }
-
-
     }
 
     public static void addApp(){

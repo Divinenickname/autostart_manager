@@ -24,7 +24,7 @@ public class Main {
         String cmd="";
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
-        //Menu menu = new Menu(bufferedReader);
+        Menu menu = new Menu(bufferedReader);
 
         /*while(!cmd.equals("exit")){
             try{
