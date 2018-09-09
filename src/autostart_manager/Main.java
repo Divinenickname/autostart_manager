@@ -5,6 +5,7 @@
  */
 package autostart_manager;
 
+import autostart_manager.command.*;
 import java.io.*;
 
 
@@ -23,35 +24,21 @@ public class Main {
         //TEST MENU REWRITE AFTER        
         String cmd="";
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        MenuItem list = new MenuItem("list", new List());
+        MenuItem add = new MenuItem("add", new Add());
+        MenuItem delete = new MenuItem("del", new Delete());
+        
         Menu menu = new Menu();
+        menu.addItem(list);
+        menu.addItem(add);
+        menu.addItem(delete);
+        
+        menu.showItems();
         
         menu.run("exit");
         
-        /*while(!cmd.equals("exit")){
-            try{
-            cmd = bufferedReader.readLine();
-
-            switch (cmd){
-                case "list":
-                    Manager.getAutostartList();
-                    break;
-
-                case "del":
-                    Manager.deleteApp();
-                    break;
-
-                case "add":
-                    Manager.addApp();
-                    break;
-                    
-                case "help":
-                    System.out.println("HELP");
-                    break;
-            }
-        }
-            catch(IOException e){
-                System.out.println(e);
-            }
-        }*/
+        /*CommandManager cmdmng = new CommandManager();
+        cmdmng.register("list", new List());
+        cmdmng.getCommand("list");*/        
     }
 }

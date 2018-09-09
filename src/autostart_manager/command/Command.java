@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package autostart_manager.commands;
+package autostart_manager.command;
 
 /**
  *
  * @author user
  */
 public interface Command {
+    
     public void execute();
 }

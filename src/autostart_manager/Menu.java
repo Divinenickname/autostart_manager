@@ -5,12 +5,12 @@
  */
 package autostart_manager;
 
-import autostart_manager.commands.Command;
+import autostart_manager.command.Command;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Set;
 
 
 /**
@@ -18,7 +18,16 @@ import java.util.List;
  * @author user
  */
 public class Menu {
-    List<Command> commands = new ArrayList<>();
+    HashMap<String, Command> commands = new HashMap<String, Command>();
+    
+    public void addItem(MenuItem item){
+        commands.put(item.getName(), item.getCommand());
+    }
+    
+    public void showItems(){
+        Set<String> set = commands.keySet();
+        System.out.println(set.toString());
+    }
         
     
     public void run(String exitcommand){
@@ -27,15 +36,13 @@ public class Menu {
         
         while(!line.equals(exitcommand)){
             try{
-            line = br.readLine();
-            
-            
-            switch(line){
-                case "list":
-                    Manager.getAutostartList();
-                    break;
-            }
-            
+                line = br.readLine();
+                if(commands.containsKey(line)){
+                    commands.get(line).execute();
+                }
+                else{
+                    System.out.println("No such command");
+                }
             }
             catch(IOException e){
                 System.err.println(e);
