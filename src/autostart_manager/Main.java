@@ -25,6 +25,12 @@ public class Main {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
         Menu menu = new Menu(bufferedReader);
+        Item list = new Item("list"){
+            @Override
+            public void toDo(){
+                Manager.getAutostartList();
+            }
+        };
 
         /*while(!cmd.equals("exit")){
             try{
