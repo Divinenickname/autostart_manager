@@ -1,36 +1,49 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package autostart_manager;
 
+import autostart_manager.commands.Command;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
+
+/**
+ *
+ * @author user
+ */
 public class Menu {
-    String cmd = "";
-    String[] items = {"help"};
+    List<Command> commands = new ArrayList<>();
+        
     
-    Menu(BufferedReader bufferedReader){
-        while (!cmd.equals("exit")){
+    public void run(String exitcommand){
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String line = "";
+        
+        while(!line.equals(exitcommand)){
             try{
-                cmd = bufferedReader.readLine();
-                if(items[0].equals(cmd)){
-                    System.out.println("HELP");
-                }
+            line = br.readLine();
+            
+            
+            switch(line){
+                case "list":
+                    Manager.getAutostartList();
+                    break;
+            }
+            
             }
             catch(IOException e){
                 System.err.println(e);
             }
         }
-    }
-    /**
-    *
-    **/
-    public void addItem(Object object, String name){
         
         
-
     }
-
-    public void help(){
-        System.out.println("HELP opopopopo");
-    }
-
+    
+    
 }

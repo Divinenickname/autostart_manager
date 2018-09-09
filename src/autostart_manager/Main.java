@@ -23,15 +23,10 @@ public class Main {
         //TEST MENU REWRITE AFTER        
         String cmd="";
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-
-        Menu menu = new Menu(bufferedReader);
-        Item list = new Item("list"){
-            @Override
-            public void toDo(){
-                Manager.getAutostartList();
-            }
-        };
-
+        Menu menu = new Menu();
+        
+        menu.run("exit");
+        
         /*while(!cmd.equals("exit")){
             try{
             cmd = bufferedReader.readLine();
