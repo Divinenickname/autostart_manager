@@ -15,8 +15,6 @@ public class Delete implements Command{
 
     @Override
     public void execute() {
-        //Manager.addApp();
-        System.out.println("DELETE");
+        Manager.addApp();
     }
-    
 }

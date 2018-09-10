@@ -19,17 +19,19 @@ import java.util.Set;
  */
 public class Menu {
     HashMap<String, Command> commands = new HashMap<String, Command>();
+    HashMap<String, MenuItem> help = new HashMap();
+    MenuItem item;
     
     public void addItem(MenuItem item){
         commands.put(item.getName(), item.getCommand());
+        this.item = item;
     }
     
     public void showItems(){
         Set<String> set = commands.keySet();
         System.out.println(set.toString());
     }
-        
-    
+
     public void run(String exitcommand){
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String line = "";

@@ -15,9 +15,7 @@ public class List implements Command{
     
     @Override
     public void execute(){
-        //Manager.getAutostartList();
-        
-        System.out.println("LISTTTT");
+        Manager.getAutostartList();
     }
     
 }

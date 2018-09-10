@@ -15,8 +15,7 @@ public class Add implements Command{
 
     @Override
     public void execute() {
-        //Manager.addApp();
-        System.out.println("Add");
+        Manager.addApp();
     }
     
 }

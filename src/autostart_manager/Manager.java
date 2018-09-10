@@ -29,7 +29,7 @@ public class Manager {
             System.err.println("Can't find directory");
         }
     }
-
+    
     public static void deleteApp(){
         String name;
 

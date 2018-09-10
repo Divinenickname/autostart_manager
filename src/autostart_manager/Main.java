@@ -6,7 +6,6 @@
 package autostart_manager;
 
 import autostart_manager.command.*;
-import java.io.*;
 
 
 /**
@@ -19,15 +18,11 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
         //DEV BRANCH
-        //getAutostartList();
 
-        //TEST MENU REWRITE AFTER        
-        String cmd="";
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         MenuItem list = new MenuItem("list", new List());
         MenuItem add = new MenuItem("add", new Add());
         MenuItem delete = new MenuItem("del", new Delete());
-        
+
         Menu menu = new Menu();
         menu.addItem(list);
         menu.addItem(add);
@@ -35,10 +30,6 @@ public class Main {
         
         menu.showItems();
         
-        menu.run("exit");
-        
-        /*CommandManager cmdmng = new CommandManager();
-        cmdmng.register("list", new List());
-        cmdmng.getCommand("list");*/        
+        menu.run("exit");       
     }
 }
